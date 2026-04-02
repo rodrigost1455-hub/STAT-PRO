@@ -89,7 +89,7 @@ STAT PRO is now associated with **Yazaki North America** on the developer's Link
 ## Author
 
 **Rodrigo Santana Torrecillas**
-Quality Engineer · Automotive Electronics · SPC & Failure Analysis
+Software Engineer · QA Automation · Automotive Domain
 [LinkedIn](https://www.linkedin.com/in/rodrigo-santana-torrecillas-5b523113b/) · Durango, México
 
 > *Built at the intersection of manufacturing quality and software — because the next generation of quality engineering is automated.*
