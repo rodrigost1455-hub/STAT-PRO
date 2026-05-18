@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #1C2E50; border-radius: 2px; }
+  ::-webkit-scrollbar-thumb:hover { background: #243858; }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; }
+
+  ::selection { background: rgba(0,180,216,0.25); color: #E2E8F0; }
+}
+
+@layer components {
+  /* ── Field ── */
+  .field-base {
+    @apply w-full bg-bg-surface border border-border-base rounded-md
+           text-tx-primary font-mono text-xs
+           outline-none transition-colors duration-150
+           focus:border-accent focus:ring-0
+           hover:border-border-mid
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .field-sm   { @apply field-base py-1.5 px-2.5 text-2xs; }
+  .field-md   { @apply field-base py-2 px-3; }
+
+  /* ── Buttons ── */
+  .btn-primary {
+    @apply w-full py-3 px-4 rounded-lg border border-accent
+           bg-accent-muted text-accent-bright
+           font-mono text-2xs font-bold tracking-widest uppercase
+           transition-all duration-200
+           hover:bg-accent/20 hover:shadow-glow-sm
+           active:scale-[0.98]
+           disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+  .btn-success {
+    @apply w-full py-3 px-4 rounded-lg border border-pass
+           bg-pass-bg text-pass
+           font-mono text-2xs font-bold tracking-widest uppercase
+           transition-all duration-200
+           hover:bg-pass/20
+           active:scale-[0.98];
+  }
+  .btn-ghost {
+    @apply py-1.5 px-3 rounded-md border border-border-base
+           bg-transparent text-tx-secondary
+           font-mono text-2xs font-medium tracking-wide
+           transition-all duration-150
+           hover:bg-bg-hover hover:text-tx-primary hover:border-border-mid
+           active:scale-[0.98];
+  }
+
+  /* ── Cards ── */
+  .card {
+    @apply bg-bg-card border border-border-base rounded-lg
+           shadow-card relative overflow-hidden
+           transition-all duration-200;
+  }
+  .card::before {
+    content: '';
+    @apply absolute inset-0 bg-panel-gradient pointer-events-none;
+  }
+  .card-hover { @apply card hover:border-border-mid hover:shadow-glow; }
+  .card-pass  { @apply card border-pass-border shadow-pass; }
+  .card-fail  { @apply card border-fail-border shadow-fail; }
+  .card-warn  { @apply card border-warn-border shadow-warn; }
+
+  /* ── Section title ── */
+  .section-title {
+    @apply font-mono text-2xs font-semibold tracking-[2.5px] uppercase
+           text-accent border-b border-border-base pb-2.5 mb-3.5;
+  }
+
+  /* ── Badge ── */
+  .badge {
+    @apply inline-flex items-center gap-1 font-mono text-2xs font-bold
+           tracking-wide px-2 py-0.5 rounded-sm;
+  }
+  .badge-pass { @apply badge bg-pass-bg text-pass border border-pass-border; }
+  .badge-fail { @apply badge bg-fail-bg text-fail border border-fail-border; }
+  .badge-warn { @apply badge bg-warn-bg text-warn border border-warn-border; }
+  .badge-info { @apply badge bg-info-bg text-info border border-info-border; }
+  .badge-dim  { @apply badge bg-bg-surface text-tx-muted border border-border-base; }
+
+  /* ── Table ── */
+  .data-table { @apply w-full border-collapse font-mono text-xs; }
+  .data-table th {
+    @apply bg-bg-surface text-accent px-3 py-2 text-left
+           font-semibold text-2xs tracking-widest uppercase
+           border-b border-border-base sticky top-0 z-10;
+  }
+  .data-table td {
+    @apply text-tx-primary px-3 py-1.5
+           border-b border-border-dim;
+  }
+  .data-table tr:hover td { @apply bg-bg-hover/50; }
+
+  /* ── Chart panel ── */
+  .chart-panel {
+    @apply card p-4;
+  }
+  .chart-title {
+    @apply font-mono text-2xs font-semibold tracking-[2px] uppercase
+           text-accent mb-3.5;
+  }
+
+  /* ── Stat block (mini descriptive) ── */
+  .stat-block {
+    @apply bg-bg-surface rounded-md px-3 py-2.5;
+  }
+  .stat-label { @apply font-mono text-2xs text-tx-muted tracking-wide block mb-1; }
+  .stat-value { @apply font-mono text-sm font-bold text-tx-primary; }
+
+  /* ── Error ── */
+  .err-box {
+    @apply bg-fail-bg border border-fail-border rounded-md
+           px-3.5 py-2.5 font-mono text-xs text-fail;
+  }
+
+  /* ── KPI card ── */
+  .kpi-card {
+    @apply card p-4 cursor-default select-none;
+  }
+  .kpi-label { @apply font-mono text-2xs text-tx-muted tracking-widest uppercase mb-1.5; }
+  .kpi-value { @apply font-mono text-2xl font-bold animate-count-up; }
+  .kpi-sub   { @apply font-mono text-2xs mt-1.5 tracking-wide; }
+
+  /* ── Nav button ── */
+  .nav-btn {
+    @apply flex items-center gap-2 px-4 py-2 rounded-md border border-transparent
+           font-mono text-2xs text-tx-secondary tracking-wide
+           transition-all duration-200
+           hover:bg-bg-card hover:border-border-base hover:text-tx-primary;
+  }
+  .nav-btn.active {
+    @apply bg-bg-card2 border-accent text-accent-bright font-semibold;
+  }
+
+  /* ── Rule card ── */
+  .rule-card-pass { @apply rounded-lg p-3.5 bg-pass-bg border border-pass-border; }
+  .rule-card-fail { @apply rounded-lg p-3.5 bg-fail-bg border border-fail-border; }
+
+  /* ── Shimmer loading ── */
+  .shimmer {
+    background: linear-gradient(90deg,
+      rgba(255,255,255,0.03) 25%,
+      rgba(255,255,255,0.07) 50%,
+      rgba(255,255,255,0.03) 75%);
+    background-size: 200% 100%;
+    @apply animate-shimmer rounded-md;
+  }
+
+  /* ── Input in table cell ── */
+  .cell-input {
+    @apply bg-bg-surface border border-border-base rounded-sm
+           text-tx-primary font-mono text-xs text-center
+           outline-none transition-colors duration-150
+           focus:border-accent hover:border-border-mid
+           px-1.5 py-1;
+  }
+}
+
+@layer utilities {
+  .text-gradient-accent {
+    background: linear-gradient(90deg, #00B4D8, #00D4FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .grid-bg {
+    background-image: linear-gradient(rgba(28,46,80,0.25) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(28,46,80,0.25) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  .glass {
+    @apply bg-bg-surface/60 backdrop-blur-md border border-border-base;
+  }
+  .mono-num {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+}

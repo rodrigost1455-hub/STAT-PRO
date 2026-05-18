@@ -1,22 +1,31 @@
 {
   "name": "statpro-industrial",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "private": true,
   "description": "Offline-first SPC platform for automotive manufacturing — IATF 16949",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "recharts": "^2.12.7"
+    "recharts": "^2.12.7",
+    "framer-motion": "^11.3.0",
+    "lucide-react": "^0.427.0",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.5.2"
   },
   "devDependencies": {
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.41",
+    "tailwindcss": "^3.4.9",
+    "typescript": "^5.5.3",
     "vite": "^5.4.2"
   }
 }
